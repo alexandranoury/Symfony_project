@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<h3 class="connect">Inscription</h3>
+<!-- Vue de notre formulaire InscriptionType-->
+<div style="padding: 70px;">
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(form) }}
+    {{  form_row(form.username, {
+        "attr" : {"placeholder" : "Saisir votre login"
+        
+        },
+        "label" : "Votre identifiant "
+    } )}}
+
+    {{  form_row(form.password, {
+        "attr" : {"placeholder" : "Saisir votre mot de passe"
+    
+    },
+        "label" : "Votre mot de passe "
+    } )}}
+
+        {{ form_widget(form) }}
+        <input type="submit" class="btn btn-primary"value="Valider">
+    {{ form_end(form) }}
+</div>
+
+{% endblock %}

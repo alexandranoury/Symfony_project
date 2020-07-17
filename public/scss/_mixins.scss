@@ -1,0 +1,13 @@
+@mixin button {
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-family: 'poppinsregular', Arial, Helvetica, sans-serif;
+    padding: 10px;
+    text-transform: uppercase;
+    background-size: 200%;
+}
+
+@mixin shadow {
+    box-shadow: 0 19px 38px rgba(99,99,99,0.30), 0 15px 12px rgba(82,82,82,0.22);
+}

@@ -1,0 +1,14 @@
+@import "vars";
+@import "mixins";
+@import "fonts";
+@import "home";
+@import "menu";
+@import "mediaqueries";
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none!important;
+}

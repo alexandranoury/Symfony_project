@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les articles de blog{% endblock %}
+
+{% block body %}
+
+        {% for article in articles  %}
+    
+        <div class="content_article">
+            <div class="img_article">
+                <img src="{{ asset('images/'~ article.image) }}" alt="images des articles">
+            </div>
+            <article>
+                <p class="categorie">{{ article.categorie.nom }}</p>
+                <h4>{{ article.titre }}</h4>
+                <span>{{ article.createdAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span>
+                <div><span>Mis à jour le {{ article.updatedAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span></div>
+                {{ article.description|raw }}
+                <div>
+                    <a class="lire_plus" href="{{ path('blog_article', {id: article.id} ) }}">Lire plus..</a>
+                </div>
+            </article>
+          </div>  
+        
+      {% endfor %}     
+        {{ knp_pagination_render(articles) }}
+{% endblock %}

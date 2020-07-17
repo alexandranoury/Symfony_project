@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}Détail article{% endblock %}
+
+{% block body %}
+<h3 class="title_progr" >Détail article</h3>
+    <div style="padding: 70px;" class="container">
+        <div class="row">
+        <article class="col-lg-8 col-md-8 offset-md-2" >
+            <p class="categorie">Alimentation</p>
+            <h4>{{ article.titre }}</h4>
+            <span>{{ article.createdAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span>
+            <span>{{  article.updatedAt | date('d/m/Y H:i:s') }}</span>
+            <p>{{ article.description }}</p>
+        </article>
+        </div>
+    </div>          
+{% endblock %}
+
+     
+
+
+
+
+
+
+

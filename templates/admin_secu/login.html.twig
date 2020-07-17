@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+<h4 class="connect">Se connecter</h4>
+
+{% if error %}
+<div style="background: #ec9a9a; font-size: 2em;">
+    {{ error.messageKey | trans(error.messagedata, 'security') }}
+</div>
+
+{% endif %}
+
+<form class="formtype" action="{{ path('connexion') }}" method="post">
+    <div>
+        <label for="">Identifiant : </label>
+        <input type="text" required name="_username" placeholder="Saisissez votre identifiant">
+    </div>
+    <div>
+        <label for="">Mot de passe : </label>
+        <input type="password" required name="_password" placeholder="Votre mot de passe">
+    </div>
+    <input class="validation" type="submit" value="S'identifier">
+
+
+</form>
+
+{% endblock %}

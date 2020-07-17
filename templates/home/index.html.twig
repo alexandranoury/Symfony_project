@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fitness At Home{% endblock %}
+
+{% block body %}
+
+<div class="accueil">
+    <div class="title">
+        <p>Welcome to</p>
+        <h1>Fitness At home</h1>
+        <hr>
+        <p>Programmes sportifs & Nutrition</p>
+        <div class="btn btn1"><a>Rejoignez-nous maintenant</a></div>
+        
+        
+    
+    </div> 
+</div>
+
+<section class="section_box1">
+    <div class="container_box1">
+        <div class="box1">              
+                        <h2>Qu'est-ce que le Fitness ?</h2>
+                        <p>Sous le terme fitness sont regroupées une pluralité d’activités qu’elles soient individuelles,
+                            comme les exercices de cardio, de musculation, des abdos-fessiers, du body combat 
+                            ou d'autres déclinaisons visant l’amélioration de la condition physique. Les activités 
+                            de fitness permettent à la fois de perdre du poids, de travailler tout le corps, son endurance 
+                            et son cardio, de se muscler, de s’assouplir et de s’entretenir.</p>
+                            <span>IL S'AGIT FINALEMENT DE FAVORISER LE BIEN-ETRE DES PARTICIPANTS ET LEUR FORME GLOBALE</span>
+        </div> 
+        <div class="box2">
+            <img class="tapis" src="{{ asset('images/tapis.jpg') }}" alt="image tapis de sport">
+        </div>
+        
+    </div>
+</section>
+    <!--//////////////////////             SECTION PROGRAMMES              //////////////////////-->
+<section id="grid">
+    
+        <div class=" item_1">
+            <img class="item_img" src="{{ asset('images/salle.jpg') }}" alt="photo salle de sport">
+        </div>
+        <div class="item_2">
+            <img class="item_img" src="{{ asset('images/shoes.jpg') }}" alt="image chaussure">
+        </div>
+        <div class="item_3">
+            <img class="item_img" src="{{ asset('images/bike.jpg') }}" alt="photo vélo">
+        </div>
+        <div class="item_4">
+            <img class="item_img" src="{{ asset('images/poid.jpg') }}" alt="photo haltère">
+        </div>
+        
+        <div class="btn2 item_5"><p><a href="">DECOUVREZ NOS PROGRAMMES</a></p></div>
+        
+</section> 
+
+    <!-- SECTION BOX HOVER-->
+    
+<section class="section_box">
+    <h2>Les bienfaits de l'activité physique.</h2>
+        <div class="container_box">
+            <div class="box green1">
+                <img class="img_box" src="{{ asset('images/icones/stress.png') }}" alt="icone stress">
+                <p>Le sport réduit le stress, anxiété et dépression.</p>
+            </div>
+            <div class="box">
+                <img class="img_box" src="{{ asset('images/icones/confidence.png') }}" alt="icone confiance">
+                <p>Il est prouvé scientifiquement que l'activité physique améliore la confiance en soi</p>
+            </div>
+            <div class="box">
+                <img class="img_box" src="{{ asset('images/icones/sign.png') }}" alt="icone santé">
+                <p>Améliore la santé cardiovasculaire.</p>
+            </div>
+            <div class="box">
+                <img class="img_box" src="{{ asset('images/icones/sommeil.png') }}" alt="icone sommeil">
+                <p>Améliore le sommeil, réduit le temps d'endormissement.</p>
+            </div>
+        </div>
+</section>
+
+<!--//////////////////////// SECTION BLOG       //////////////////////-->
+
+     <div class="content_article">
+        <div class="img_article">
+            <img src="images/bocaux.jpg" alt="bocaux nourritures">
+        </div>
+        <article>
+            <p class="categorie">{{ article.categorie.nom }}</p>
+            <h4>{{ article.titre }}</h4>
+            <span>{{ article.createdAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span>
+            <p>{{ article.description }}</p>
+
+                <div><a class="lire_plus" href="{{ path('blog_article', {id: article.id} ) }}">Lire plus...</a></div>
+        </article>
+       
+        <div class="bouton_articles">
+            <a href="{{ path('blog') }}">Voir tous les articles</a>
+        </div>
+       
+    </div> 
+
+  
+
+
+
+{% endblock %}

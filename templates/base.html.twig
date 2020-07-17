@@ -1,12 +1,111 @@
-<!DOCTYPE html>
+
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Fitness at Home{% endblock %}</title>
+        <meta  content="width=device-width, initial-scale=1" name="viewport">
+        
+        
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('./css/main.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('./bootstrap/bootstrap.min.css') }}">
+        {% endblock %}
     </head>
     <body>
+        <header>
+            <div class="logo_login">
+                <div class="container_logo">
+                    <img src="{{ asset('images/logo.jpg') }}" alt="logo">
+                </div>
+                <div class="connexion">
+                    {% if not app.user %}
+                    <li class="log"><a href="{{ path('inscription') }}">Inscription</a></li>
+                    <li class="log"><a href="{{ path('connexion') }}">Connexion</a></li>
+                   {% else %}
+
+                   {% if is_granted('ROLE_ADMIN') %}
+                    <li class="log hellouser"> Bonjour : {{app.user.username}} !</li>
+                   {% endif %}
+                   {% if is_granted('ROLE_USER') %}
+                    <li class="log hellouser"> Bonjour : {{app.user.username}} !</li>
+                   {% endif %}
+                    <li class="log"><a href="{{ path('deconnexion') }}">Deconnexion</a></li>
+                    {% endif %}
+                    
+                </div>
+            </div>
+                <nav>
+                    <ul>
+                        <li class="hover"><a href="{{ path('home') }}">HOME</a></li>
+                        <li class="hover"><a href="{{ path('programme') }}">PROGRAMMES</a></li>
+                        <li class="hover"><a href="{{ path('blog') }}">BLOG</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li class="hover"><a href="{{ path('admin_article') }}">ADMIN</a></li>
+                        {% endif %}
+                        
+                    </ul>
+                </nav>
+        </header>
+            <div class="nav_mobile">
+                <div class="contain_logmobile">
+                    <img class="logo_mobile" src="{{ asset('images/Programme_sportif__1_-removebgblack.png') }}" alt="logo">
+                </div>
+                <div>
+                <img class="burger" src="{{ asset('images/icones/align-right.svg')}}" alt="icone responsive">
+            </div>
+            </div>
+       
+        <div id="mobile" class="mobile">
+            
+            <ul class="list">
+                
+                <li class="items"><a href="{{ path('home') }}"> HOME</a></li>
+                <li class="items"><a href="{{ path('programme') }}">PROGRAMME</a></li>
+                <li class="items"><a href="{{ path('blog') }}">BLOG</a></li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="items"><a href="{{ path('admin_article') }}">ADMIN</a></li>
+                {% endif %}
+
+                {% if not app.user %}
+                <li class="items"><a href="{{ path('inscription') }}">Inscription</a></li>
+                <li class="items"><a href="{{ path('connexion') }}">Connexion</a></li>
+                {% else %}
+                
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="items hellouser"> Bonjour : {{app.user.username}} !</li>
+                   {% endif %}
+                   {% if is_granted('ROLE_USER') %}
+                    <li class="items hellouser"> Bonjour : {{app.user.username}} !</li>
+                   {% endif %}
+                <li class="items"><a href="{{ path('deconnexion') }}">Deconnexion</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <footer>
+            <div class="footer_menu">
+                <ul>
+                    <li><a href="{{ path('home') }}">HOME </a></li>
+                    <li><a href="{{ path('programme') }}">PROGRAMMES</a></li>
+                    <li><a href="{{ path('blog') }}">BLOG</a></li>
+                </ul>
+            </div>
+            <div class="footer_icone">
+                <img src="{{ asset('images/logo.jpg') }}" alt="">
+            </div>
+        </footer>
+        
+        {% block javascripts %}<script  type="text/javascript" src="{{ asset('../greensock/gsap.min.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+        <script type="text/javascript" src="{{ asset('../js/dist/scripts.min.js')}}"></script>
+        {% endblock %}
+        
+        
+        
     </body>
+
+   
 </html>

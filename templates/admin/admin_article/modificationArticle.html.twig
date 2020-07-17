@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout/modification Article{% endblock %}
+
+
+{% block body %}
+
+{% if isModification  %}
+<h3 class="modif_article"> Modification : {{ article.titre }}</h3>
+{% else %}
+<h3 class="modif_article">Ajout d'un article</h3>
+{% endif %}
+
+    <div style="padding: 80px;">
+        {{ form_start(form)}}
+
+        <div>{{ form_row(form.titre)}}</div>
+        <div> {{ form_row(form.description)}}</div>
+        <div>{{ form_row(form.imageFile)}}</div>
+        <div>{{ form_row(form.categorie)}}</div>
+    
+            <input class="validation" type="submit" value="Valider">
+        {{ form_end(form)}}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+
+
+
+<a class="btn btn_ajout" href="{{ path('admin_article_creation') }}">Ajouter</a>
+
+{% for message in app.flashes('success') %}
+    <div class="flash" style="background: #D4EDDA; font-size: 2em;" class="">
+        {{ message }}
+    </div>
+{% endfor %}
+  
+    {% for article in articles %}   
+        <div class="admin">
+            <div><img src="{{asset('images/' ~ article.image) }}" class="admin_img"</div>
+            <div>{{ article.titre }}</div>
+            <div class="description">{{ article.description|raw }}</div>
+            <td>{{ article.createdAt | date('d-m-Y') }}</td>
+            <td>{{ article.categorie.nom }}</td>
+
+            <div>
+                <a class="btn btn-secondary" href="{{ path('admin_article_modification', {'id' : article.id }) }}" >Modifier</a>
+                <form style="display: inline-block;" method="POST" action="{{ path('admin_article_suppression', {'id' : article.id}) }}">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ article.id )}}">
+                    <input class="btn btn-secondary" type="submit" value="supprimer" onsubmit="return confirm('Voulez-vous vraiment supprimer ?')">
+                </form>
+            </div>
+        </div>
+   {% endfor %}      
+
+{% endblock %}

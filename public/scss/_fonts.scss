@@ -1,0 +1,12 @@
+@import "_mixins/_font-face";
+
+@include font-face("Robotothin", "../fonts/Roboto-Thin");
+@include font-face("Robotoregular", "../fonts/Roboto-Regular");
+@include font-face("Robotomedium", "../fonts/Roboto-Medium");
+@include font-face("Robotobold", "../fonts/Roboto-Bold");
+
+@include font-face("poppinsthin", "../fonts/Poppins-Thin");
+@include font-face("poppinsregular", "../fonts/Poppins-Regular");
+
+@include font-face("playregular", "../fonts/Play-Regular");
+@include font-face("playbold", "../fonts/Play-Bold");
