@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Categorie;
+
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
@@ -35,6 +35,7 @@ class AdminArticleController extends AbstractController
     {   
         if(!$article) {
             $article = new Article();
+            $article->setCreatedAt(new \DateTime);
         }
 
         $form = $this->createForm(ArticleType::class, $article);

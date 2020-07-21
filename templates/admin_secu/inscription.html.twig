@@ -5,9 +5,14 @@
 {% block body %}
 <h3 class="connect">Inscription</h3>
 <!-- Vue de notre formulaire InscriptionType-->
-<div style="padding: 70px;">
+<div class="js-rep-log-table" style="padding: 70px;">
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
-    {{ form_start(form) }}
+    {{ form_start(form, {
+        'attr': {
+            'class': 'form-inline js-new-rep-log-form',
+            'novalidate': 'novalidate'
+        }
+    }) }}
     {{  form_row(form.username, {
         "attr" : {"placeholder" : "Saisir votre login"
         
@@ -23,8 +28,9 @@
     } )}}
 
         {{ form_widget(form) }}
-        <input type="submit" class="btn btn-primary"value="Valider">
+        <input type="submit" class="ajax btn btn-primary"value="Valider">
     {{ form_end(form) }}
+    <p style="display: none" class="msg">Votre Formulaire a été envoyé</p>
 </div>
 
 {% endblock %}

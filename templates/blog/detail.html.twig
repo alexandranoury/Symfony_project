@@ -8,8 +8,15 @@
         <article class="col-lg-8 col-md-8 offset-md-2" >
             <p class="categorie">Alimentation</p>
             <h4>{{ article.titre }}</h4>
-            <span>{{ article.createdAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span>
-            <span>{{  article.updatedAt | date('d/m/Y H:i:s') }}</span>
+           {# SI LA DATE DE CREATION EST EGAL A LA DATE D'UPDATE AFFICHE SEULEMENT LA DATE DE CREATION #}
+           {% if  (article.updatedAt) == (article.createdAt) %}
+           <span>Créé le :{{ article.createdAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span>
+           
+           {% else %}
+           {# SI CEST DIFFERENT AFFICHE LES DEUX #}
+           <span>{{ article.createdAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span>
+           <div><span>Mis à jour le {{ article.updatedAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span></div>
+           {% endif %}
             <p>{{ article.description }}</p>
         </article>
         </div>

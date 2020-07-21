@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -42,6 +43,9 @@ class Article
     /**
      * @var File
      * @Vich\UploadableField(mapping="article_image", fileNameProperty="image")
+     * @Assert\File(
+     * mimeTypes={"image/jpg","image/jpeg"},
+     * mimeTypesMessage = "Votre image n'est pas valide (png, jpg, jpeg)")
      */
     private $imageFile;
 
@@ -55,6 +59,7 @@ class Article
         $this->imageFile = $imageFile;
         if($this->imageFile instanceof UploadedFile) {
             $this->updated_at = new \DateTime('now');
+        
            
         }
         return $this;
@@ -74,7 +79,8 @@ class Article
     private $categorie;
 
     /**
-     * @ORM\Column(type="datetime")
+     * 
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
 
@@ -91,6 +97,7 @@ class Article
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
+        
 
         return $this;
     }
@@ -103,7 +110,7 @@ class Article
     public function setDescription(string $description): self
     {
         $this->description = $description;
-
+        
         return $this;
     }
 

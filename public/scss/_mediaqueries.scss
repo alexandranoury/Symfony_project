@@ -22,6 +22,19 @@
 }
 
 
+@media screen and (max-width: 500px) {
+    .content_article {
+        padding-top: 100px;
+    }
+}
+
+
+@media screen and (max-width: 615px) {
+    .accueil {
+        background-position: top;
+    }
+}
+
 
 
 @media screen and (max-width: 727px) {
@@ -64,16 +77,6 @@
 
 }
 
-
-
-#grid .item_5 {
-    grid-column: 3/11;
-    grid-row: 10/10;
-}
-
-.item_3 {
-    display: none;
-}
 
 
 @media screen and (max-width: 904px) {

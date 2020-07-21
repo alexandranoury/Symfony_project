@@ -13,9 +13,16 @@
             <article>
                 <p class="categorie">{{ article.categorie.nom }}</p>
                 <h4>{{ article.titre }}</h4>
+                {# SI LA DATE DE CREATION EST EGAL A LA DATE D'UPDATE AFFICHE SEULEMENT LA DATE DE CREATION #}
+                {% if  (article.updatedAt) == (article.createdAt) %}
+                <span>Crée le :{{ article.createdAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span>
+                
+                {% else %}
+                {# SI CEST DIFFERENT AFFICHE LES DEUX #}
                 <span>{{ article.createdAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span>
                 <div><span>Mis à jour le {{ article.updatedAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span></div>
-                {{ article.description|raw }}
+                {% endif %}
+                <p class="paragraphe">{{ article.description }}</p>
                 <div>
                     <a class="lire_plus" href="{{ path('blog_article', {id: article.id} ) }}">Lire plus..</a>
                 </div>

@@ -10,7 +10,10 @@
         <h1>Fitness At home</h1>
         <hr>
         <p>Programmes sportifs & Nutrition</p>
-        <div class="btn btn1"><a>Rejoignez-nous maintenant</a></div>
+        {% if app.user %} 
+        {% else %}
+        <div class="btn btn1"><a href="{{ path('inscription') }}">Rejoignez-nous maintenant</a></div>
+        {% endif %}
         
         
     
@@ -35,24 +38,44 @@
     </div>
 </section>
     <!--//////////////////////             SECTION PROGRAMMES              //////////////////////-->
-<section id="grid">
-    
-        <div class=" item_1">
-            <img class="item_img" src="{{ asset('images/salle.jpg') }}" alt="photo salle de sport">
-        </div>
-        <div class="item_2">
-            <img class="item_img" src="{{ asset('images/shoes.jpg') }}" alt="image chaussure">
-        </div>
-        <div class="item_3">
-            <img class="item_img" src="{{ asset('images/bike.jpg') }}" alt="photo vélo">
-        </div>
-        <div class="item_4">
-            <img class="item_img" src="{{ asset('images/poid.jpg') }}" alt="photo haltère">
-        </div>
-        
-        <div class="btn2 item_5"><p><a href="">DECOUVREZ NOS PROGRAMMES</a></p></div>
-        
-</section> 
+    <div class="programme grid-container">
+        <article class="card_prog">
+          <p class="title_sport" href="#">Cardio</p>
+          <div class="prog_image">
+            <div>
+              <img  class="img_prog" src="{{ asset('images/shoes.jpg') }}" alt="">
+            </div>
+          </div>
+        </article>
+        <article class="card_prog">
+            <p class="title_sport" href="#">Musculation</p>
+            <div class="prog_image">
+              <div>
+                <img  class="img_prog" src="{{ asset('images/poid.jpg') }}" alt="">
+              </div>
+            </div>
+          </article>
+        <article class="card_prog">
+            <p class="title_sport" href="#">HIIT</p>
+            <div class="prog_image">
+              <div class="">
+                <img  class="img_prog" src="{{ asset('images/canoe.jpg') }}" alt="">
+              </div>
+            </div>
+          </article>
+          <article class="card_prog">
+            <p class="title_sport" href="#">Musculation</p>
+            <div class="prog_image">
+              <div class="">
+                <img  class="img_prog" src="{{ asset('images/sport.jpg') }}" alt="">
+              </div>
+            </div>
+          </article>
+      </div>
+      <div class="button">
+        <div class="btn3"><a href="">DECOUVREZ NOS PROGRAMMES</a></div> 
+      </div>
+
 
     <!-- SECTION BOX HOVER-->
     
@@ -82,13 +105,13 @@
 
      <div class="content_article">
         <div class="img_article">
-            <img src="images/bocaux.jpg" alt="bocaux nourritures">
+            <img src="{{ asset('images/'~ article.image) }}" alt="images des articles">
         </div>
         <article>
             <p class="categorie">{{ article.categorie.nom }}</p>
             <h4>{{ article.titre }}</h4>
             <span>{{ article.createdAt | date('d/m/Y H:i:s', "Europe/Paris") }}</span>
-            <p>{{ article.description }}</p>
+            <p class="paragraphe">{{ article.description }}</p>
 
                 <div><a class="lire_plus" href="{{ path('blog_article', {id: article.id} ) }}">Lire plus...</a></div>
         </article>

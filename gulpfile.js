@@ -29,7 +29,7 @@ gulp.task("sass", function(){
 gulp.task("scripts", function() {
 	return gulp.src([
 		"public/libs/jquery/jquery-3.5.1.min.js",
-		"public/js/src/**/*.js"
+		"public/js/src/**/*.js", allowEmptytrue
 	])
 	.pipe(sourcemaps.init())
 	.pipe(babel({

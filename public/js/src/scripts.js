@@ -1,23 +1,45 @@
+// $(document).ready(function() {
+//   var $wrapper = $('.js-rep-log-table');
+//   var repLogApp = new RepLogApp($wrapper);
+
+//   window.RepLogApp = function ($wrapper) {
+//     this.$wrapper.find('.js-new-rep-log-form').on(
+//         'submit',
+//         this.handleNewFormSubmit.bind(this)
+//     );
+
+//     $.extend(window.RepLogApp.prototype, {
+//       handleNewFormSubmit: function(e) {
+//           e.preventDefault();
+//           var $form = $(e.currentTarget);
+
+//           $.ajax({
+//             url: $form.attr('action'),
+//             method: 'POST',
+//             data: $form.serialize(),
+            
+//         })
+//        });
+//        this.reset(); // formElement.reset()
+//    }
+      
+
+
+
+
+
 window.onload = function(){
-    TweenMax.from('.title', 2,{
-        x: -900,
-       
-    })
-    TweenMax.from('.hover', 2.5,{
-        y: -500,
-       
-    })
-
-
-
-
-
-   
+  
+    /** Animation titre accueil */
+    $('.title').animate({"left": "0"},1150);
+     
 }
+
+
 
 var controller = new ScrollMagic.Controller();
 var tl = new TimelineMax();
-tl.staggerFrom([".box1", ".tapis"], 1.25, {
+tl.staggerFrom([".box1", ".tapis"], 1, {
   scale: 0,
   cycle: {
     y: [-50, 50]
@@ -91,12 +113,9 @@ $('.mobile').hide();
 $('.burger').click(function() {
     $('.mobile').fadeToggle("1500");
 })
-$('.hover').on('mouseenter', function(){
-    $(this).siblings().addClass('hide');
+// $('.hover').on('mouseenter', function(){
+//     $(this).siblings().addClass('hide');
     
- });
+//  });
 
-// $('.hover').on('mouseleave', function() {
-//    $(this).siblings().removeClass('hide');
-         
-// });
+

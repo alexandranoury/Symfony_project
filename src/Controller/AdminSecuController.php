@@ -29,8 +29,8 @@ class AdminSecuController extends AbstractController
             $utilisateur->setRoles("ROLE_USER"); #A la création role_user#
             $entityManager->persist($utilisateur);
             $entityManager->flush();
-            return $this->redirectToRoute('home');
-        }
+        //     return $this->redirectToRoute('home');
+         }
         return $this->render('admin_secu/inscription.html.twig', [
             "form" => $form->createView()
             # Passage de la variable du form à la vue #

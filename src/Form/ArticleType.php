@@ -6,7 +6,7 @@ use App\Entity\Article;
 
 use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +19,7 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('description', CKEditorType::class)
+            ->add('description')
             ->add('imageFile', FileType::class, ['required' =>false])
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,

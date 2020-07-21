@@ -52,7 +52,7 @@
             margin: auto;
             padding-top: 18px;
             display: flex;
-        }
+            }  
 
         li {
             margin: auto;
@@ -162,10 +162,11 @@ footer {
         position: absolute;
         z-index: 9999999999;
         background: black;
-        padding-top: 102px;
+        padding-top: 45px;
         opacity: 0.9;
         top: 62;
         right: 0;
+        position: fixed;
    
     
     .list {
